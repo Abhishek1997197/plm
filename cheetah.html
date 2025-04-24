@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cheetah</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-next="elephant.html" data-prev="tiger.html">
+  <img src="cheetah.jpg" alt="Cheetah" />
+  <div class="header-boxes">
+    <div class="header-box">2025-04-24</div>
+    <div class="header-box">Cheetah</div>
+  </div>
+  <div class="description">Cheetahs are the fastest land animals and are known for their speed.</div>
+  <div class="diet-box"><a href="https://en.wikipedia.org/wiki/Carnivore" target="_blank">Carnivore</a></div>
+  
+<script>
+  let startX = 0;
+  document.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  document.addEventListener("touchend", (e) => {
+    let endX = e.changedTouches[0].clientX;
+    const next = document.body.dataset.next;
+    const prev = document.body.dataset.prev;
+
+    if (startX - endX > 50 && next) {
+      window.location.href = next;
+    } else if (endX - startX > 50 && prev) {
+      window.location.href = prev;
+    }
+  });
+</script>
+
+</body>
+</html>
